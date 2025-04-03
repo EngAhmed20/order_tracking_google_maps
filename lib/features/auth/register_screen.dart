@@ -7,6 +7,7 @@ import 'package:practical_google_maps_example/core/widgets/spacing_widgets.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:practical_google_maps_example/features/auth/repo/auth_repo.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -34,6 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AuthRepo().registerUser(userName: 'Ahmed Mohamed', email: 'Ahmed2@gmail.com', password: '20122000');
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
