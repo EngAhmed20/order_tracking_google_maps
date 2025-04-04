@@ -21,10 +21,12 @@ try{
   });
   return const Right('Account Created Successfully');
 
-}catch(e){
+} on FirebaseAuthException catch (e) {
+  log(e.message ?? "حدث خطأ غير معروف");
+  return Left(e.message ?? "حدث خطأ غير معروف");
+} catch (e) {
   log(e.toString());
-  return Left("Error when create Account:"+e.toString());
-
+  return Left(e.toString());
 }
   }
 
@@ -36,7 +38,11 @@ try{
       log(userModel.userName);
       return Right(userModel);
 
-    }catch(e){
+    }on FirebaseException catch(e){
+      return Left(e.toString());
+    }
+    catch(e){
+      log(e.toString());
       return Left("Error When Login: $e");
 
     }
